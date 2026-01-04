@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>隨手記 - 功能介紹</title>
+  <style>
+    /* 介紹頁面專屬樣式 */
+    body {
+      width: 100%;
+      height: 100vh;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      overflow-y: auto; /* 允許捲動 */
+    }
+    .intro-card {
+      background-color: var(--item-bg);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+    }
+    h1 { font-size: 2rem; margin-bottom: 10px; color: var(--highlight); }
+    h2 { font-size: 1.2rem; margin-top: 25px; margin-bottom: 10px; color: var(--accent-color); border-bottom: 1px solid var(--header-border); padding-bottom: 5px; }
+    p { line-height: 1.8; color: var(--text-color); margin-bottom: 15px; }
+    ul { list-style: disc; padding-left: 20px; margin-bottom: 15px; }
+    li { display: list-item; background: none; box-shadow: none; padding: 5px 0; margin: 0; cursor: default; }
+    li:hover { background: none; transform: none; }
+    .footer { text-align: center; margin-top: 40px; color: var(--secondary-text); font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+  <div class="intro-card">
+    <header style="border: none; margin-bottom: 0;">
+      <h1>📖 隨手記 Quick Note</h1>
+    </header>
+    <p>一個極簡、快速、且專注於寫作體驗的 Chrome 筆記插件。資料自動同步，隨開隨寫。</p>
+
+    <h2>✨ 核心功能</h2>
+    <ul>
+      <li><strong>自動儲存</strong>：無需手動存檔，打字的瞬間即刻保存。</li>
+      <li><strong>雲端同步</strong>：只要登入 Chrome 帳號，筆記會在不同電腦間同步。</li>
+      <li><strong>離線使用</strong>：斷網也能寫，連線後自動上傳。</li>
+    </ul>
+
+    <h2>🚀 進階操作</h2>
+    <ul>
+      <li><strong>置頂筆記 (Pin)</strong>：點擊筆記右側的「⋮」選單，選擇置頂，重要事項不遺漏。</li>
+      <li><strong>垃圾桶機制</strong>：刪除的筆記會進入垃圾桶，給你後悔的機會。</li>
+      <li><strong>右鍵選單</strong>：支援全域右鍵選單，操作更流暢。</li>
+    </ul>
+
+    <h2>🎨 個人化設定</h2>
+    <ul>
+      <li><strong>多種主題</strong>：內建米黃(護眼)、暗黑(夜間)、純白(簡約)三種模式。</li>
+      <li><strong>自訂字體</strong>：可自由調整字體大小與視窗寬度。</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    By Someone
+  </div>
+
+  <script>
+    // 簡單的腳本：載入時讀取主題設定，讓介紹頁也保持一致的風格
+    chrome.storage.sync.get(['settings'], (result) => {
+      if (result.settings) {
+        document.body.setAttribute('data-theme', result.settings.theme || 'default');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Quick Note</title>
+</head>
+<body>
+  
+  <div id="list-view" class="container">
+    <header>
+      <div class="header-left">
+        <h1 id="list-title">我的筆記</h1>
+      </div>
+      <div class="header-right">
+        <button id="settings-btn" class="icon-btn" title="設定">⚙️</button>
+        <button id="trash-toggle-btn" class="icon-btn" title="查看垃圾桶">🗑️</button>
+        <button id="add-btn" class="icon-btn" title="新增筆記">＋</button>
+      </div>
+    </header>
+    <ul id="note-list"></ul>
+    <div id="empty-msg" class="hidden">這裡空空如也</div>
+  </div>
+
+  <div id="editor-view" class="container hidden">
+    <header>
+      <button id="back-btn" class="icon-btn">← 返回</button>
+      <div class="editor-actions">
+        <button id="restore-btn" class="icon-btn hidden" title="還原筆記">♻️ 還原</button>
+        <button id="delete-btn" class="icon-btn delete" title="刪除">🗑️</button>
+      </div>
+    </header>
+    <span id="status">已儲存</span>
+    <textarea id="note-area" placeholder="在這裡寫下你的想法..."></textarea>
+  </div>
+
+  <div id="settings-modal" class="hidden">
+    <div class="settings-box">
+      <div class="settings-header">
+        <h3>偏好設定</h3>
+        <button id="close-settings-btn" class="icon-btn">✕</button>
+      </div>
+      
+      <div class="setting-item">
+        <label>主題顏色</label>
+        <div class="theme-options">
+          <button class="theme-btn default" data-theme="default" title="米黃"></button>
+          <button class="theme-btn dark" data-theme="dark" title="暗黑"></button>
+          <button class="theme-btn white" data-theme="white" title="純白"></button>
+        </div>
+      </div>
+
+      <div class="setting-item">
+        <label>字體大小</label>
+        <input type="range" id="font-size-slider" min="12" max="20" step="1" value="14">
+        <span id="font-size-display">14px</span>
+      </div>
+      
+      <div class="setting-item">
+        <label>視窗寬度</label>
+        <select id="width-select">
+          <option value="320px">標準 (320px)</option>
+          <option value="400px">寬版 (400px)</option>
+          <option value="500px">超寬 (500px)</option>
+        </select>
+      </div>
+
+      <hr style="border: 0; border-top: 1px solid var(--header-border); margin: 20px 0;">
+
+      <button id="open-intro-btn" class="full-page-btn">ℹ️ 插件介紹</button>
+    </div>
+  </div>
+
+  <div id="modal-overlay" class="hidden">
+    <div class="modal-box">
+      <p id="modal-msg">確認？</p>
+      <div class="modal-actions">
+        <button id="modal-cancel-btn" class="modal-btn cancel">取消</button>
+        <button id="modal-confirm-btn" class="modal-btn confirm">確定</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="context-menu" class="dropdown-menu hidden">
+    <button id="menu-pin-btn" class="dropdown-item">📌 置頂筆記</button>
+    <button id="menu-delete-btn" class="dropdown-item">🗑️ 移至垃圾桶</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
